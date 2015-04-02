@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>kdl-calendar-grid</string>
+	<key>connections</key>
+	<dict>
+		<key>179477DD-A85E-470C-9305-E9FB5C1ED471</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>A716612A-9541-42FB-8B66-7715342E172D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>25A40140-F40B-45B1-9D84-C55673FC8589</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>587DC0C4-828A-4273-B75A-860ECD75F1DB</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>3D3DA3C0-5AC6-46E1-8C0F-601F0600C28F</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>10B069F1-2CDA-4DEF-8EF8-FC98FC5230C4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>A716612A-9541-42FB-8B66-7715342E172D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9D872EEE-9980-4BA8-9A79-A6F3B1946A8C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>FAECC6FB-BF95-452F-9FCF-74E157BF9364</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3D3DA3C0-5AC6-46E1-8C0F-601F0600C28F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>25A40140-F40B-45B1-9D84-C55673FC8589</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Show in Large Type</string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Kailey Lampert</string>
+	<key>description</key>
+	<string>Quick view of a month</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Calendar Grid</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>date_default_timezone_set('America/Los_Angeles');
+
+$q = '{query}';
+$month = stripslashes( $q );
+
+if ( empty( $month ) ) {
+	$month = 'this month';
+}
+
+$full_date = date('n Y', strtotime( $month ) );
+die( str_replace( ' ', '  ', shell_exec( "cal $full_date" ) ) );
+</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>3D3DA3C0-5AC6-46E1-8C0F-601F0600C28F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>2</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<true/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Calendar</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>10B069F1-2CDA-4DEF-8EF8-FC98FC5230C4</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>keyword</key>
+				<string>cal</string>
+				<key>text</key>
+				<string>Calendar Grid</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>FAECC6FB-BF95-452F-9FCF-74E157BF9364</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>type</key>
+			<string>alfred.workflow.output.largetype</string>
+			<key>uid</key>
+			<string>587DC0C4-828A-4273-B75A-860ECD75F1DB</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>date_default_timezone_set('America/Los_Angeles');
+
+$q = '{query}';
+$month = stripslashes( $q );
+
+if ( empty( $month ) ) {
+	$month = 'this month';
+}
+
+
+$full_date = date('n Y', strtotime( $month ) );
+die( str_replace( ' ', '  ', shell_exec( "cal $full_date" ) ) );</string>
+				<key>type</key>
+				<integer>1</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>25A40140-F40B-45B1-9D84-C55673FC8589</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>127</integer>
+				<key>script</key>
+				<string>cal -my $(date -v-1m "+%m %Y")
+cal
+cal -my $(date -v+1m "+%m %Y")</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>A716612A-9541-42FB-8B66-7715342E172D</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<false/>
+				<key>output</key>
+				<integer>2</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<true/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Calendar</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>9D872EEE-9980-4BA8-9A79-A6F3B1946A8C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>cals</string>
+				<key>subtext</key>
+				<string>Last, this, and next month</string>
+				<key>text</key>
+				<string>Calendars</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>179477DD-A85E-470C-9305-E9FB5C1ED471</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Icon: http://www.iconfinder.com/icondetails/3755/128/agenda_calendar_date_event_icon</string>
+	<key>uidata</key>
+	<dict>
+		<key>10B069F1-2CDA-4DEF-8EF8-FC98FC5230C4</key>
+		<dict>
+			<key>ypos</key>
+			<real>40</real>
+		</dict>
+		<key>179477DD-A85E-470C-9305-E9FB5C1ED471</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>25A40140-F40B-45B1-9D84-C55673FC8589</key>
+		<dict>
+			<key>ypos</key>
+			<real>190</real>
+		</dict>
+		<key>3D3DA3C0-5AC6-46E1-8C0F-601F0600C28F</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>587DC0C4-828A-4273-B75A-860ECD75F1DB</key>
+		<dict>
+			<key>ypos</key>
+			<real>160</real>
+		</dict>
+		<key>9D872EEE-9980-4BA8-9A79-A6F3B1946A8C</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>A716612A-9541-42FB-8B66-7715342E172D</key>
+		<dict>
+			<key>ypos</key>
+			<real>370</real>
+		</dict>
+		<key>FAECC6FB-BF95-452F-9FCF-74E157BF9364</key>
+		<dict>
+			<key>ypos</key>
+			<real>100</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://trepmal.com/alfredapp/calendar-grid/</string>
+</dict>
+</plist>
